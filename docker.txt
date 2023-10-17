@@ -1,0 +1,1 @@
+docker run -dp 127.0.0.1:8000:8000 --name workshop_lit -it --entrypoint /bin/ash --mount type=bind,source="$(pwd)",target=/home node:20.8.1-alpine3.18 && docker exec -it workshop_lit ash
