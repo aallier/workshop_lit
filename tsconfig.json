@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "esnext",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
+  }
+}
