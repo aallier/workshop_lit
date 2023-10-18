@@ -1,6 +1,6 @@
-import { css, html, HTMLTemplateResult, LitElement } from 'lit';
+import { css, html, HTMLTemplateResult, LitElement, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { fireEvent } from '../Helper';
+import { fireEvent } from '../Helper.js';
 
 @customElement('workshop-chip')
 export default class Chip extends LitElement {
@@ -11,29 +11,28 @@ export default class Chip extends LitElement {
     return html`
         <div class="container">
             ${this.value}
-            ${this.close ? this.renderClose() : ''}
+            ${this.close ? this.#renderClose() : nothing}
         </div>
     `;
   }
 
-  private renderClose(): HTMLTemplateResult {
+  #renderClose(): HTMLTemplateResult {
     return html`
-        <button class="close" @click=${this.closed}>❌</button>
+        <button class="close" @click=${this.#closed}>❌</button>
     `;
   }
 
-  private closed(): void {
-    fireEvent(this, 'removed', {value: this.value});
-  }
-
-  private clicked(key: string): void {
-    fireEvent(this, 'selected', {value: key});
+  #closed(): void {
+    fireEvent(this, 'chip-closed', {value: this.value});
   }
 
   static styles = css`
     :host {
+      display: block;
       border: #00000040 solid 0.1px;
       border-radius: 5px;
+      padding: 2px;
+      width: fit-content;
     }
 
     .container {

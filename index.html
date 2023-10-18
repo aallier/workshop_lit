@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Workshop Lit</title>
-    <script src="dist/index.js"></script>
+    <script src="dist/index.js" type="module"></script>
 </head
 >
 <body>
-<form action="/" method="post">
     <h1>Workshop Lit</h1>
-</form>
+
+    <h2>Chip</h2>
+    <workshop-chip value="Charles"></workshop-chip>
+    <workshop-chip value="Bronson" close="true" id="chip"></workshop-chip>
+    <output id="output"></output>
+    <script>
+        const output = document.getElementById('output');
+        const chip = document.getElementById('chip');
+        chip.addEventListener('chip-closed', ev => output.value = `C'est tout ce que ca te fais ${ev.detail.value}`);
+    </script>
 </body>
 </html>

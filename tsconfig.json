@@ -5,6 +5,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "nodenext"
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
   }
 }
