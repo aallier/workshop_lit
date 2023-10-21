@@ -1,8 +1,17 @@
 export type CEvent = keyof CDomEvents;
 
 export interface CDomEvents {
-  'chip-closed': {
+  'selected': {
     value: string;
+  };
+  'removed': {
+    value: string;
+  };
+  'filter-changed': {
+    value: string;
+  };
+  'value-changed': {
+    value: unknown;
   };
 }
 

@@ -2,11 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Workshop Lit</title>
+    <title>Lit Workshop</title>
     <script src="dist/index.js" type="module"></script>
 </head
 >
 <body>
-    <h1>Workshop Lit</h1>
+<form onsubmit="test">
+    <label for="multi">Multi select</label>
+    <workshop-multiselect filter="manual" id="multi" required></workshop-multiselect>
+
+    <input type="submit" value="submit">
+</form>
+
+<script>
+    document.getElementsByTagName('workshop-multiselect')[0].items = {
+        'option1': 'option 1',
+        'test': 'test',
+        'option3': 'option 3'
+    }
+    document.getElementsByTagName('workshop-multiselect')[0].addEventListener('filter-changed', e => {
+        document.getElementsByTagName('workshop-multiselect')[0].items =
+          Object.keys(window)
+            .filter(v => v.match(e.detail.value))
+            .reduce((a, v) => ({...a, [v]: v}), {});
+    });
+
+    async function test(e) {
+        e.preventDefault();
+
+        const formData = new FormData(e.srcElement)
+        for (const pair of formData.entries()) {
+            console.log(pair)
+        }
+
+        return false;
+    }
+</script>
 </body>
 </html>
